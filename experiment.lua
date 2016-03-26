@@ -1,11 +1,11 @@
 local image = require 'image'
-local Catch = require 'rlenvs/Catch'
+local Rover = require 'rlenvs/Rover'
 
 -- Detect QT for image display
 local qt = pcall(require, 'qt')
 
 -- Initialise and start environment
-local env = Catch({level = 2})
+local env = Rover({noise=1})
 local stateSpec = env:getStateSpec()
 local actionSpec = env:getActionSpec()
 local observation = env:start()
