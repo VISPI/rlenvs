@@ -1,5 +1,10 @@
 local classic = require 'classic'
+<<<<<<< HEAD
 local Rover = classic.class('RoverEnv')
+=======
+
+local Rover, super = classic.class('Rover', env)
+>>>>>>> 3d9d029767cbb595d2ce857420f9e389cf9815be
 
 --Constructor
 function Rover:_init(opts)
@@ -14,6 +19,7 @@ function Rover:_init(opts)
 
   --Player State
   self.player = {
+<<<<<<< HEAD
     x = math.ceil(self.size / 2),
     width = opts.playerWidth or math.ceil(self.size / 12)
 }
@@ -43,6 +49,53 @@ end
 -- 1 action required, of type 'int', of dimensionality 1, between 0 and 2
 function Rover:getActionSpec()
   return {'int', 1, {0, 2}}
+=======
+    x = math.ceil(self.size / 2)
+    y = math.ceil(self.size / 2)
+    angle = 0
+  }
+end
+
+function Rover:start()
+
+end
+
+function Rover:getActionSpec()
+  return {'float', 1, {0, 1, 2}}
+end
+
+function Rover:getRewardSpec()
+  return 0,99999999999
+end
+
+function Rover:step(action)
+  --Reward is 0 by default
+  local reward = 0
+
+  --Each action corresponds to {0,1},{1,0},{1,1}
+  if action == 1 then --{0,1}
+    --compute angle changes here
+  elseif action == 2 then --{1,0} + Xdeg
+    --compute angle changes here
+  elseif action == 3 then
+    --compute movement here
+end
+
+
+function Rover:redraw()
+  --Generate map during runtime map here
+end
+
+function Rover:start()
+self.player.x = math.ceil(self.size /2)
+self.player.y = math.ceil(self.size/2)
+
+--Generate Initial mappings above
+self:redraw()
+end
+
+
+>>>>>>> 3d9d029767cbb595d2ce857420f9e389cf9815be
 end
 
 function Rover:print_grid(grid)
