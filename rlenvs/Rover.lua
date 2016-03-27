@@ -68,7 +68,7 @@ function Rover:step(action)
   elseif action == 3 then
     --compute movement here
 end
-
+end
 
 function Rover:redraw()
   --Generate map during runtime map here
