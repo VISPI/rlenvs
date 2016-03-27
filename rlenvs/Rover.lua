@@ -51,13 +51,6 @@ function Rover:getActionSpec()
     angle = 0
 end
 
-function Rover:start()
-
-end
-
-function Rover:getActionSpec()
-  return {'float', 1, {0, 1, 2}}
-end
 
 function Rover:getRewardSpec()
   return 0,99999999999
