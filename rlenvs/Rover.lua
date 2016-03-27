@@ -1,10 +1,5 @@
 local classic = require 'classic'
-<<<<<<< HEAD
-local Rover = classic.class('RoverEnv')
-=======
-
 local Rover, super = classic.class('Rover', env)
->>>>>>> 3d9d029767cbb595d2ce857420f9e389cf9815be
 
 --Constructor
 function Rover:_init(opts)
@@ -19,18 +14,19 @@ function Rover:_init(opts)
 
   --Player State
   self.player = {
-<<<<<<< HEAD
     x = math.ceil(self.size / 2),
     width = opts.playerWidth or math.ceil(self.size / 12)
 }
   self.grid={}
-  self.rowsize=10
-  self.colsize=10
-  self.maxvalue=1
+  self.rowsize= opts.rowsize or 10
+  self.colsize=opts.colsize or 10
+  self.maxvalue=opts.maxvalue or 1
 
 end
 
 function Rover:start()
+    --self.player.x = math.ceil(self.size /2)
+    self.player.y = math.ceil(self.size/2)
     --Generate the map
     for i = 0, self.rowsize-1, 1  do
         self.grid[i] = {} --create the row
@@ -39,6 +35,8 @@ function Rover:start()
             end
     end
     self:print_grid(grid)
+    --Generate Initial mappings above
+    self:redraw()
 end
 
 -- 1 state returned, of type 'int', of dimensionality 1 x self.size x self.size, between 0 and 1
@@ -49,7 +47,6 @@ end
 -- 1 action required, of type 'int', of dimensionality 1, between 0 and 2
 function Rover:getActionSpec()
   return {'int', 1, {0, 2}}
-=======
     x = math.ceil(self.size / 2)
     y = math.ceil(self.size / 2)
     angle = 0
@@ -84,18 +81,6 @@ end
 
 function Rover:redraw()
   --Generate map during runtime map here
-end
-
-function Rover:start()
-self.player.x = math.ceil(self.size /2)
-self.player.y = math.ceil(self.size/2)
-
---Generate Initial mappings above
-self:redraw()
-end
-
-
->>>>>>> 3d9d029767cbb595d2ce857420f9e389cf9815be
 end
 
 function Rover:print_grid(grid)
