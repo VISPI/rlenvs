@@ -46,11 +46,9 @@ end
 
 -- 1 action required, of type 'int', of dimensionality 1, between 0 and 2
 function Rover:getActionSpec()
-  return {'int', 1, {0, 2}}
     x = math.ceil(self.size / 2)
     y = math.ceil(self.size / 2)
     angle = 0
-  }
 end
 
 function Rover:start()
